@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>ZhanCongc's Website</title>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="card-panel teal center-align hoverable">
+            <span class="white-text text-darken-2">Card List</span>
+        </div>
+        <div class="chip">
+            <img src="{{ url_for('static', filename='img/avatar-lady.jpg') }}" alt="author">Lisa
+        </div>
+        <div class="card-panel center-align hide-on-med-and-down">
+            <span class="blue-text text-darken-2">Hello, Desktop!</span>
+        </div>
+        <div class="card-panel center-align hide-on-med-and-up">
+            <span class="blue-text text-darken-2">Hello, Phone!</span>
+        </div>
+        <div class="card-panel center-align hide-on-large-only">
+            <span class="blue-text text-darken-2 truncate">There are many words in this long sentence, many people dislike this sentence because it is too long.</span>
+        </div>
+        <div class="col s12 m8 offset-m2 16 offset-l3">
+            <div class="card-panel grey lighten-5 z-depth-1">
+                <div class="row valign-wrapper">
+                    <div class="col s2">
+                        <img alt="" class="circle responsive-img" src="{{ url_for('static', filename='img/avatar-lady.jpg') }}">
+                    </div>
+                    <div class="col s10">
+                        <span class="black-text">Hello, Everyone! I'm Lisa Calls.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--div class="video-container">
+            <video width="100%" controls>
+                <source src="{{ url_for('static', filename='video/big_buck_bunny.mp4') }}" type="video/mp4">
+            </video>
+        </div-->
+        <table class="bordered striped highlight centered">
+            <thead>
+                <tr><th data-field="id">姓名</th><th data-field="name">年龄</th><th data-field="price">民族</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>张三</td><td>17</td><td>汉</td></tr>
+                <tr><td>李四</td><td>12</td><td>苗</td></tr>
+                <tr><td>李明</td><td>25</td><td>汉</td></tr>
+            </tbody>
+        </table>
+        <div class="card-panel">
+            <p class="flow-text">别具特色。在湘西，张家界等少数民族地区，只要有人群来往的地方，就会有卖酸萝卜的摊子。张家界人不管男女老幼，不论文人农夫，都喜欢醮着鲜红的辣子汁吃腌酸萝卜片、酸萝卜梗。</p>
+            <p class="flow-text">腌萝卜泡制的方法很多，各家自有绝招拒不外传，做得好的酸中有甜，甜中带香，再加上辣椒的辣味，这种味道只能品尝，难以言传。味最好的腌酸萝卜摊子应该是在文昌阁小学门口，凤凰有句经典的话是“文昌阁的腌萝卜，想起来就流水”。</p>
+        </div>
+        <div class="row">
+            <div class="col s12 m6">
+                <div class="card blue-grey darken-1">
+                <div class="card-content white-text">
+                    <span class="card-title">卡片标题</span>
+                    <p>我是一个很简单的卡片。我很擅长于包含少量的信息。我很方便，因为我只需要一个小标记就可以有效地使用。</p>
+                </div>
+                <div class="card-action">
+                    <a href="#">这是一个链接</a>
+                    <a href="#">这是一个链接</a>
+                </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 m6">
+                <div class="card">
+                    <div class="card-image">
+                        <img class="materialboxed" src="{{ url_for('static', filename='img/avatar-lady.jpg') }}">
+                        <span class="card-title">Title</span>
+                    </div>
+                    <div class="card-content">
+                        <p>This is a simple card, which is good at storing little information, because it can be used with an easy markup.</p>
+                    </div>
+                    <div class="card-action">
+                        <a href="">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
