@@ -61,9 +61,10 @@
 {% endblock %}
 
 {% block scripts %}
-<script type="application/javascript">
-    $(document).ready(function() {
-        $('select').material_select();
-    });
-</script>
+    <script type="application/javascript">
+        $(document).ready(function() {
+            $('select').material_select();
+            $('input, textarea').characterCounter();
+        });
+    </script>
 {% endblock %}

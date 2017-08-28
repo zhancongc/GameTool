@@ -39,7 +39,9 @@
 
 {% block scripts %}
     <script type="application/javascript">
-        $('#textarea1').val('New Text');
-        $('#textarea1').trigger('autoresize');
+        $(document).ready(function() {
+            $('input, textarea#textarea_sql').characterCounter();
+        });
+        $('#textarea_sql').trigger('autoresize');
     </script>
 {% endblock %}

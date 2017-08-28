@@ -67,4 +67,9 @@
 {% endblock %}
 
 {% block scripts %}
+    <script type="application/javascript">
+        $(document).ready(function() {
+            $('input, textarea').characterCounter();
+        });
+    </script>
 {% endblock %}
