@@ -41,15 +41,15 @@
                         </div>
                         <div class="input-field validate col s12">
                             <i class="material-icons prefix">turned_in_not</i>
-                            <input class="validate" type="text" name="activity_id" required>
+                            <input class="validate" type="text" name="activity_id" length="100" required>
                             <label for="activity_id">activity id</label>
                         </div>
                         <div class="input-field validate col s12">
                             <i class="material-icons prefix">av_timer</i>
-                            <input class="validate" type="text" name="period" required>
+                            <input class="validate" type="text" name="period" length="3" required>
                             <label for="period">period (hour)</label>
                         </div>
-                        <a class="waves-effect waves-light btn" type="submit" onclick="javascript:start_activity.submit();">
+                        <a class="waves-effect waves-light btn" type="submit" onclick="start_activity.submit();">
                             submit<i class="material-icons right">send</i>
                         </a>
                     </form>

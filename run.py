@@ -24,6 +24,11 @@ def translate():
     return render_template('translate.html')
 
 
+@app.route('/execute', methods=['GET', 'POST'])
+def execute():
+    return render_template('execute.html')
+
+
 @app.route('/activities/start', methods=['POST'])
 def start_activities():
     return render_template('output.html')
@@ -31,7 +36,6 @@ def start_activities():
 
 @app.route('/translate/sdata', methods=['POST'])
 def translate_sdata():
-
     return render_template('output.html')
 
 
