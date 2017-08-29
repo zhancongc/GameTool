@@ -13,14 +13,24 @@
                     <div class="card-content">
                         <span class="card-title"></span>
                         <div></div>
-                        <form action="{{ url_for('execute') }}" method="post" name="execute" id="execute">
+                        <form action="{{ url_for('execute_sql') }}" method="post" name="execute" id="execute">
+                            <div class="input-field validate col s12 l6">
+                                <i class="material-icons prefix">devices</i>
+                                <input class="validate" type="text" name="server" length="50" placeholder="server" required>
+                                <label for="server">server</label>
+                            </div>
+                            <div class="input-field validate col s12 l6">
+                                <i class="material-icons prefix">location_searching</i>
+                                <input class="validate" type="text" name="port" length="50" placeholder="port" value="3306" required>
+                                <label for="port">port</label>
+                            </div>
                             <div class="input-field validate col s12">
-                                <i class="material-icons prefix">dns</i>
+                                <i class="material-icons prefix">storage</i>
                                 <input class="validate" type="text" name="database" length="50" placeholder="database name" required>
                                 <label for="database">database</label>
                             </div>
                             <div class="input-field validate col s12">
-                                <i class="material-icons prefix">mode_edit</i>
+                                <i class="material-icons prefix">code</i>
                                 <textarea form="execute" id="textarea_sql" name="sql" rows="3" class="materialize-textarea" length="1000" placeholder="SQL" required></textarea>
                                 <label for="sql">SQL</label>
                             </div>
