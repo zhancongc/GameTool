@@ -13,10 +13,12 @@
                     <div class="card-content">
                         {% if url %}
                             <span class="card-title">Properties</span>
-                        <p><a class="btn waves-effect waves-green" href="{{ url }}"><i class="material-icons left">get_app</i>Download</a></p>
-                        {% else %}
-                            <span class="card-title">Log</span>
-                            <p>...</p>
+                            <p><a class="btn waves-effect waves-green" href="{{ url }}">
+                                <i class="material-icons left">get_app</i>Download</a></p>
+                        {% endif %}
+                        {% if warning %}
+                            <span class="card-title">Warning</span>
+                            <p>{{ warning }}</p>
                         {% endif %}
                     </div>
                 </div>

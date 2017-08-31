@@ -1,18 +1,20 @@
-from flask import Flask, render_template, request, redirect, url_for
-from werkzeug import secure_filename
-
-
-UPLOAD_FOLDER = '/path/to/the/uploads'
-ALLOWED_EXTENSIONS = set(['properties', 'xls', 'xlsx'])
+import os
+from flask import Flask, render_template, request, url_for, send_from_directory
+from property import ALLOWED_EXTENSIONS
+from app.secure_filename import secure_filename
 
 
 app = Flask(__name__)
-app.config['DEBUG'] = True
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.config.from_object('config')
 
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
+
+
+@app.route('/upload/<filename>')
+def uploaded_file(filename):
+    return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
 
 
 @app.route('/')
@@ -47,11 +49,17 @@ def translate_sdata():
 
 @app.route('/translate/properties', methods=['POST'])
 def translate_properties():
-    file = request.file['file']
-    if file and allowed_file(file.filename):
-        filename = secure_filename(file.filename)
-        file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-    return render_template('output.html', url=url)
+    properties, excel = request.files['properties'], request.files['excel']
+    if properties and excel:
+        if allowed_file(properties.filename) and allowed_file(excel.filename):
+            properties_filename, excel_filename = secure_filename(excel.filename), secure_filename(properties.filename)
+            properties.save(os.path.join(app.config['UPLOAD_FOLDER'], properties_filename))
+            excel.save(os.path.join(app.config['UPLOAD_FOLDER'], excel_filename))
+            return render_template('output.html', url=url_for('uploaded_file', filename=properties_filename))
+        else:
+            return render_template('output.html', warning='File is not allowed due to the unacceptable extension.')
+    else:
+        return render_template('output.html', warning='File is not found.')
 
 
 @app.route('/execute', methods=['GET', 'POST'])
