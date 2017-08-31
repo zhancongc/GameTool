@@ -1,7 +1,18 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect, url_for
+from werkzeug import secure_filename
+
+
+UPLOAD_FOLDER = '/path/to/the/uploads'
+ALLOWED_EXTENSIONS = set(['properties', 'xls', 'xlsx'])
+
 
 app = Flask(__name__)
 app.config['DEBUG'] = True
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
+
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
 
 
 @app.route('/')
@@ -36,7 +47,10 @@ def translate_sdata():
 
 @app.route('/translate/properties', methods=['POST'])
 def translate_properties():
-    url = 'http://127.0.0.1:65534/static/img/avatar-lady.jpg'
+    file = request.file['file']
+    if file and allowed_file(file.filename):
+        filename = secure_filename(file.filename)
+        file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
     return render_template('output.html', url=url)
 
 
