@@ -17,6 +17,11 @@ def uploaded_file(filename):
     return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
 
 
+@app.route('/out/<filename>')
+def out_file(filename):
+    return send_from_directory(app.config['OUT_FOLDER'], filename)
+
+
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -57,8 +62,9 @@ def translate_properties():
             excel_path = os.path.join(app.config['UPLOAD_FOLDER'], excel_filename)
             properties.save(properties_path)
             excel.save(excel_path)
-            TransProperties(properties, excel)
-            return render_template('output.html', url=url_for('uploaded_file', filename=properties_filename))
+            example = TransProperties(properties_path, excel_path)
+            example.transfer()
+            return render_template('output.html', url=url_for('out_file', filename='output.properties'))
         else:
             return render_template('output.html', warning='File is not allowed due to the unacceptable extension.')
     else:

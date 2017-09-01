@@ -1,3 +1,7 @@
+import os
+import re
+from werkzeug._compat import PY2
+
 def secure_filename(filename):
     r"""Pass it a filename and it will return a secure version of it.  This
     filename can then safely be stored on a regular file system and passed
@@ -22,7 +26,9 @@ def secure_filename(filename):
 
     :param filename: the filename to secure
     """
-    if isinstance(filename, text_type):
+    _filename_ascii_strip_re = re.compile(r'[^A-Za-z0-9_.-]')
+    _windows_device_files = ('CON', 'AUX', 'COM1', 'COM2', 'COM3', 'COM4', 'LPT1', 'LPT2', 'LPT3', 'PRN', 'NUL')
+    if isinstance(filename, str):
         from unicodedata import normalize
         filename = normalize('NFKD', filename).encode('ascii', 'ignore')
         if not PY2:

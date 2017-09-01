@@ -27,7 +27,7 @@ class TransProperties(object):
         variables, languages = [], []
         with open(self.package, 'r', encoding='utf-8') as f:
             for line in f.readlines():
-                a, b = line.split(' = ')[0], line.split(' = ')[1]
+                a, b = line.split(' = ')[0], line.split(' = ')[-1]
                 variables.append(a.strip('\n').strip(' ').strip('\t'))
                 languages.append(b.strip('\n').strip(' ').strip('\t'))
             print('Read {0} successfully!'.format(self.package))
