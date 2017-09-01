@@ -64,7 +64,10 @@ class TransProperties(object):
         '''
         with open(filename, 'w', encoding='utf-8') as f:
             for key in dictory:
-                string = '{0} = {1}\n'.format(key, dictory[key])
+                if key == dictory[key]:
+                    string = '{0}\n'.format(key)
+                else:
+                    string = '{0} = {1}\n'.format(key, dictory[key])
                 f.write(string)
 
     @staticmethod
