@@ -1,15 +1,15 @@
 import os
 from flask import Flask, render_template, request, url_for, send_from_directory
-from property import ALLOWED_EXTENSIONS
 from app.secure_filename import secure_filename
+from app.trans_properties import TransProperties
 
 
 app = Flask(__name__)
 app.config.from_object('config')
 
 
-def allowed_file(filename):
-    return '.' in filename and filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
+def allowed_file(filename, extensions):
+    return '.' in filename and filename.rsplit('.', 1)[1] in extensions
 
 
 @app.route('/upload/<filename>')
@@ -51,10 +51,13 @@ def translate_sdata():
 def translate_properties():
     properties, excel = request.files['properties'], request.files['excel']
     if properties and excel:
-        if allowed_file(properties.filename) and allowed_file(excel.filename):
+        if allowed_file(properties.filename, ['properties']) and allowed_file(excel.filename, ['xls', 'xlsx']):
             properties_filename, excel_filename = secure_filename(excel.filename), secure_filename(properties.filename)
-            properties.save(os.path.join(app.config['UPLOAD_FOLDER'], properties_filename))
-            excel.save(os.path.join(app.config['UPLOAD_FOLDER'], excel_filename))
+            properties_path = os.path.join(app.config['UPLOAD_FOLDER'], properties_filename)
+            excel_path = os.path.join(app.config['UPLOAD_FOLDER'], excel_filename)
+            properties.save(properties_path)
+            excel.save(excel_path)
+            TransProperties(properties, excel)
             return render_template('output.html', url=url_for('uploaded_file', filename=properties_filename))
         else:
             return render_template('output.html', warning='File is not allowed due to the unacceptable extension.')
