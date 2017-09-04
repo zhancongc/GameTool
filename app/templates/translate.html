@@ -12,7 +12,7 @@
             <div class="card">
                 <div class="card-content">
                     <span class="card-title">Java Properties</span>
-                    <form action="{{ url_for('translate_properties') }}" method="post" name="translate_properties" enctype=multipart/form-data>
+                    <form action="{{ url_for('web.translate_properties') }}" method="post" name="translate_properties" enctype=multipart/form-data>
                         <div class="file-field input-field">
                             <div class="btn blue waves-effect waves-light" style="width: 150px;">
                                 <span>properties</span>
@@ -40,7 +40,7 @@
             <div class="card">
                 <div class="card-content">
                     <span class="card-title">SDATA</span>
-                    <form action="{{ url_for('translate_sdata') }}" method="post" name="translate_sdata">
+                    <form action="{{ url_for('web.translate_sdata') }}" method="post" name="translate_sdata">
                         <div class="file-field input-field">
                             <div class="input-field validate col s12">
                                 <i class="material-icons prefix">storage</i>

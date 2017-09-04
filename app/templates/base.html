@@ -19,20 +19,20 @@
     <nav>
         <div class="nav-wrapper #0d47a1 blue darken-4">
             <div class="col s12">
-                <a href="{{ url_for('index') }}" class="brand-logo">&nbsp;&nbsp;Game Assistant Tool</a>
+                <a href="{{ url_for('web.index') }}" class="brand-logo">&nbsp;&nbsp;Game Assistant Tool</a>
             </div>
             <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a class="active" href="{{ url_for('websites') }}">Websites</a></li>
-                <li><a href="{{ url_for('activities') }}">Activities</a></li>
-                <li><a href="{{ url_for('translate') }}">Translate</a></li>
-                <li><a href="{{ url_for('execute') }}">Execute</a></li>
+                <li><a class="active" href="{{ url_for('web.websites') }}">Websites</a></li>
+                <li><a href="{{ url_for('web.activities') }}">Activities</a></li>
+                <li><a href="{{ url_for('web.translate') }}">Translate</a></li>
+                <li><a href="{{ url_for('web.execute') }}">Execute</a></li>
             </ul>
             <ul class="side-nav" id="mobile-demo">
-                <li><a class="active" href="{{ url_for('websites') }}">Websites</a></li>
-                <li><a href="{{ url_for('activities') }}">Activities</a></li>
-                <li><a href="{{ url_for('translate') }}">Translate</a></li>
-                <li><a href="{{ url_for('execute') }}">Execute</a></li>
+                <li><a class="active" href="{{ url_for('web.websites') }}">Websites</a></li>
+                <li><a href="{{ url_for('web.activities') }}">Activities</a></li>
+                <li><a href="{{ url_for('web.translate') }}">Translate</a></li>
+                <li><a href="{{ url_for('web.execute') }}">Execute</a></li>
             </ul>
         </div>
     </nav>
@@ -59,7 +59,7 @@
         <div class="footer-copyright">
             <div class="container">
                 © 2017 Copyright GAME ASSISTANT TOOL
-                <a class="grey-text text-lighten-4 right" href="{{ url_for('index') }}" target="_blank">INDEX</a>
+                <a class="grey-text text-lighten-4 right" href="{{ url_for('web.index') }}" target="_blank">INDEX</a>
             </div>
         </div>
     </footer>
