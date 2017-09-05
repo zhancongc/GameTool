@@ -1,4 +1,3 @@
-from flask import current_app
 from . import db
 
 
@@ -9,6 +8,9 @@ class Game(db.Model):
     game_version = db.Column(db.Unicode(32))
     country = db.Column(db.Unicode(32))
     server = db.relationship('Server', backref='game', lazy='dynamic')
+
+    def __repr__(self):
+        return 'Game {0}'.format(self.game_name)
 
 
 class Server(db.Model):
@@ -21,4 +23,6 @@ class Server(db.Model):
     socket_port = db.Column(db.Integer)
     http_port = db.Column(db.Integer)
 
+    def __repr__(self):
+        return '<Server {0} {1}>'.format(self.game_id, self.game_version)
 

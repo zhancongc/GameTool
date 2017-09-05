@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block head %}
-    <title>Output</title>
+    <title>Execute</title>
 {% endblock %}
 
 {% block content %}
@@ -16,22 +16,22 @@
                         <form action="{{ url_for('web.execute_sql') }}" method="post" name="execute" id="execute">
                             <div class="input-field validate col s12 l6">
                                 <i class="material-icons prefix">devices</i>
-                                <input class="validate" type="text" name="server" length="50" placeholder="server" required>
-                                <label for="server">server</label>
+                                <input class="validate" name="server" type="text" length="50" required>
+                                <label for="server">server ip</label>
                             </div>
                             <div class="input-field validate col s12 l6">
                                 <i class="material-icons prefix">location_searching</i>
-                                <input class="validate" type="text" name="port" length="50" placeholder="port" value="3306" required>
+                                <input class="validate" name="port" type="text" length="50" value="3306" required>
                                 <label for="port">port</label>
                             </div>
                             <div class="input-field validate col s12">
                                 <i class="material-icons prefix">storage</i>
-                                <input class="validate" type="text" name="database" length="50" placeholder="database name" required>
+                                <input class="validate" name="database" type="text" length="50" required>
                                 <label for="database">database</label>
                             </div>
                             <div class="input-field validate col s12">
                                 <i class="material-icons prefix">code</i>
-                                <textarea form="execute" id="textarea_sql" name="sql" rows="4" class="materialize-textarea" length="1000" placeholder="SQL" required></textarea>
+                                <textarea form="execute" id="textarea_sql" name="sql" rows="4" class="materialize-textarea" length="1000" required></textarea>
                                 <label for="sql">SQL</label>
                             </div>
                             <a class="waves-effect waves-light btn" type="submit" onclick="execute.submit();">

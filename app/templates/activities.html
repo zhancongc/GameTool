@@ -13,7 +13,7 @@
                 <div class="card-content">
                     <span class="card-title">Activity property</span>
                     <form action="{{ url_for('web.start_activities') }}" method="post" name="start_activity">
-                        <div class="input-field validate col s12">
+                        <div class="input-field validate col s12 l6">
                             <i class="material-icons prefix">games</i>
                             <select>
                                 <option value="" disabled selected>Choose a game</option>
@@ -22,31 +22,24 @@
                             </select>
                             <label>game</label>
                         </div>
-                        <div class="input-field validate col s12">
+                        <div class="input-field validate col s12 l6">
                             <i class="material-icons prefix">subject</i>
-                            <select>
-                                    <option value="7.2">7.2</option>
-                                    <option value="7.3">7.3</option>
-                                    <option value="7.4">7.4</option>
-                                    <option value="8.4">8.4</option>
-                                    <option value="8.5">8.5</option>
-                                    <option value="8.6">8.6</option>
-                                    <option value="8.7">8.7</option>
-                                    <option value="8.8">8.8</option>
-                                    <option value="8.9">8.9</option>
-                                    <option value="9.1">9.1</option>
-                                    <option value="9.2">9.2</option>
-                            </select>
+                            <input class="validate" name="version" type="text" lengnth="5" required>
                             <label>version</label>
                         </div>
                         <div class="input-field validate col s12">
                             <i class="material-icons prefix">turned_in_not</i>
-                            <input class="validate" type="text" name="activity_id" length="100" required>
+                            <input class="validate" name="activity_id" type="text" length="100" required>
                             <label for="activity_id">activity id</label>
                         </div>
                         <div class="input-field validate col s12">
+                                <i class="material-icons prefix">class</i>
+                                <input class="validate" name="parameter" type="text" length="500" required>
+                                <label for="parameter">parameter</label>
+                        </div>
+                        <div class="input-field validate col s12">
                             <i class="material-icons prefix">access_time</i>
-                            <input class="validate" type="text" name="period" length="3" required>
+                            <input class="validate" name="period" type="text" length="3" required>
                             <label for="period">period (hour)</label>
                         </div>
                         <a class="waves-effect waves-light btn" type="submit" onclick="start_activity.submit();">
