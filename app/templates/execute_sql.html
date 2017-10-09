@@ -11,18 +11,32 @@
             <div class="col s12">
                 <div class="card">
                     <div class="card-content">
-                        <span class="card-title"></span>
+                        <span class="card-title">SQL</span>
                         <div></div>
-                        <form action="{{ url_for('web.execute_sql') }}" method="post" name="execute" id="execute">
+                        <form action="{{ url_for('web.execute_sql') }}" method="post" name="execute_sql" id="execute">
+                        {{ form.csrf_token }}
+                        {% if form.csrf_token.errors %}
+                            <div class="warning">You have submitted an invalid CSRF token</div>
+                        {% endif %}
                             <div class="input-field validate col s12 l6">
                                 <i class="material-icons prefix">devices</i>
-                                <input class="validate" name="server" type="text" length="50" required>
-                                <label for="server">server ip</label>
+                                <input class="validate" name="host" type="text" length="50" required>
+                                <label for="host">host</label>
                             </div>
                             <div class="input-field validate col s12 l6">
                                 <i class="material-icons prefix">location_searching</i>
                                 <input class="validate" name="port" type="text" length="50" value="3306" required>
                                 <label for="port">port</label>
+                            </div>
+                            <div class="input-field validate col s12 l6">
+                                <i class="material-icons prefix">storage</i>
+                                <input class="validate" name="username" type="text" length="50" required>
+                                <label for="database">username</label>
+                            </div>
+                            <div class="input-field validate col s12 l6">
+                                <i class="material-icons prefix">storage</i>
+                                <input class="validate" name="password" type="password" length="50" required>
+                                <label for="database">password</label>
                             </div>
                             <div class="input-field validate col s12">
                                 <i class="material-icons prefix">storage</i>
@@ -34,7 +48,7 @@
                                 <textarea form="execute" id="textarea_sql" name="sql" rows="4" class="materialize-textarea" length="1000" required></textarea>
                                 <label for="sql">SQL</label>
                             </div>
-                            <a class="waves-effect waves-light btn" type="submit" onclick="execute.submit();">
+                            <a class="waves-effect waves-light btn" type="submit" onclick="execute_sql.submit();">
                                 submit<i class="material-icons right">send</i></a>
                         </form>
                     </div>

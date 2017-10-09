@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>Execute</title>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <h2>Execute Bash</h2>
+            <div class="col s12">
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title">Bash</span>
+                        <div></div>
+                        <form action="{{ url_for('web.execute_bash') }}" method="post" name="execute_bash" id="execute_bash">                        {{ form.csrf_token }}
+                        {% if form.csrf_token.errors %}
+                            <div class="warning">You have submitted an invalid CSRF token</div>
+                        {% endif %}
+                            <div class="input-field validate col s12 l6">
+                                <i class="material-icons prefix">devices</i>
+                                <input class="validate" name="host" type="text" length="50" required>
+                                <label for="host">host</label>
+                            </div>
+                            <div class="input-field validate col s12 l6">
+                                <i class="material-icons prefix">location_searching</i>
+                                <input class="validate" name="port" type="text" length="50" value="22" required>
+                                <label for="port">port</label>
+                            </div>
+                            <div class="input-field validate col s12 l6">
+                                <i class="material-icons prefix">storage</i>
+                                <input class="validate" name="username" type="text" length="50" required>
+                                <label for="database">username</label>
+                            </div>
+                            <div class="input-field validate col s12 l6">
+                                <i class="material-icons prefix">storage</i>
+                                <input class="validate" name="password" type="password" length="50" required>
+                                <label for="database">password</label>
+                            </div>
+                            <div class="input-field validate col s12">
+                                <i class="material-icons prefix">code</i>
+                                <textarea form="execute_bash" id="textarea_bash" name="bash" rows="4" class="materialize-textarea" length="1000" required></textarea>
+                                <label for="sql">Bash</label>
+                            </div>
+                            <a class="waves-effect waves-light btn" type="submit" onclick="execute_bash.submit();">
+                                submit<i class="material-icons right">send</i></a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block footer %}
+{% endblock %}
+
+{% block scripts %}
+    <script type="application/javascript">
+        $(document).ready(function() {
+            $('input, textarea#textarea_bash').characterCounter();
+        });
+        $('#textarea_bash').trigger('autoresize');
+    </script>
+{% endblock %}
